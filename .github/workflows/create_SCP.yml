@@ -38,8 +38,8 @@ jobs:
           if [ -d "./root/create_SCP" ]; then
             cd ./root/create_SCP
             terraform init
-            terraform plan -state="./root/create_SCP/terraform.tfstate" -var="policy_name=rax-Testing-All-Base-SCps"
-            terraform apply -auto-approve -state="./root/create_SCP/terraform.tfstate" -var="policy_name=rax-Testing-All-Base-SCps"
+            terraform plan -state="./root/create_SCP/terraform.tfstate" 
+            terraform apply -auto-approve -state="./root/create_SCP/terraform.tfstate"
             #terraform destroy -auto-approve -state="./root/create_SCP/terraform.tfstate"
           else
             echo "Directory ./root/create_SCP does not exist."
