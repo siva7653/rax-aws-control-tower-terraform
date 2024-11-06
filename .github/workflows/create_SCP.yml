@@ -4,10 +4,10 @@ name: Terraform
 on:
   push:
     branches:
-      - main  # Trigger on changes to the main branch (or adjust as necessary)
-  pull_request:
-    branches:
-      - main  # Trigger on pull requests targeting the main branch (or adjust as necessary)
+      - siva-test  # Trigger on changes to the main branch (or adjust as necessary)
+  # pull_request:
+  #   branches:
+  #     - main  # Trigger on pull requests targeting the main branch (or adjust as necessary)
 
 jobs:
   terraform:
