@@ -1,5 +1,5 @@
 resource "aws_organizations_policy" "deny_cloudtrail_deletion" {
-  name        = "rax-All-Base-SCps"
+  name        = var.policy_name
   description = "all base scps"
   content     = <<POLICY
 {
