@@ -1,3 +1,7 @@
+variable "policy_name" {
+  description = "The name of the AWS Organizations policy"
+  type        = string
+}
 resource "aws_organizations_policy" "deny_cloudtrail_deletion" {
   name        = var.policy_name
   description = "all base scps"
