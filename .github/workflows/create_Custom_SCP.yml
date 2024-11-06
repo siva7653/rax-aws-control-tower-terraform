@@ -3,10 +3,11 @@ name: Create Custom SCP
 on:
   push:
     branches:
-      - main
-  pull_request:
-    branches:
-      - main
+      #- main
+      - sivaVanga
+  # pull_request:
+  #   branches:
+  #     - main
 
 jobs:
   terraform:
