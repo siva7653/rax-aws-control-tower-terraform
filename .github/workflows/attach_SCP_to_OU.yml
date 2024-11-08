@@ -40,9 +40,9 @@ jobs:
           if [ -d "./root/Rax-Mainline" ]; then
             cd ./root/Rax-Mainline
             terraform init
-            terraform plan -var-file="./root/Rax-Mainline/variables.tfvars" -state="./Rax-Mainline/terraform.tfstate"
-            #terraform apply -var-file="./Rax-Mainline/variables.tfvars" -state="./Rax-Mainline/terraform.tfstate"
-            #terraform destroy -var-file="./Rax-Mainline/variables.tfvars" -state="./Rax-Mainline/terraform.tfstate"
+            terraform plan -var-file="./root/Rax-Mainline/variables.tfvars" -state="./root/Rax-Mainline/terraform.tfstate"
+            #terraform apply -var-file="./root/Rax-Mainline/variables.tfvars" -state="./root/Rax-Mainline/terraform.tfstate"
+            #terraform destroy -var-file="./root/Rax-Mainline/variables.tfvars" -state="./root/Rax-Mainline/terraform.tfstate"
           else
             echo "Directory ./root/create_Config does not exist."
             exit 1
