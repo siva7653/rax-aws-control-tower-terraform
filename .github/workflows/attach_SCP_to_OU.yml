@@ -1,4 +1,5 @@
 # Before running this workflow, please refer to the instructions in the README file.
+# Depending on the OU you want to manage, uncomment the respective section.
 name: Attach Controlls and SCP to OU
 
 on:
