@@ -1,5 +1,5 @@
 # Before running this workflow, please refer to the instructions in the README file.
-name: Create Config Rule
+name: Attach Controlls and SCP to OU
 
 on:
   push:
@@ -35,15 +35,56 @@ jobs:
           aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
           aws-region: us-east-1  # Specify the AWS region for your resources
 
-      - name: Run Terraform Commands
-        run: |
-          if [ -d "./root/Rax-Mainline" ]; then
-            cd ./root/Rax-Mainline
-            terraform init
-            terraform plan -var-file="./root/Rax-Mainline/variables.tfvars" -state="./root/Rax-Mainline/terraform.tfstate"
-            #terraform apply -var-file="./root/Rax-Mainline/variables.tfvars" -state="./root/Rax-Mainline/terraform.tfstate"
-            #terraform destroy -var-file="./root/Rax-Mainline/variables.tfvars" -state="./root/Rax-Mainline/terraform.tfstate"
-          else
-            echo "Directory ./root/create_Config does not exist."
-            exit 1
-          fi
+      # - name: Attach Controlls and SCP to Rax-Mainline OU
+      #   run: |
+      #     if [ -d "./root/Rax-Mainline" ]; then
+      #       cd ./root/Rax-Mainline
+      #       terraform init
+      #       terraform plan -var-file="./root/Rax-Mainline/variables.tfvars" -state="./root/Rax-Mainline/terraform.tfstate"
+      #       #terraform apply -var-file="./root/Rax-Mainline/variables.tfvars" -state="./root/Rax-Mainline/terraform.tfstate"
+      #       #terraform destroy -var-file="./root/Rax-Mainline/variables.tfvars" -state="./root/Rax-Mainline/terraform.tfstate"
+      #     else
+      #       echo "Directory ./root/create_Config does not exist."
+      #       exit 1
+      #     fi
+          
+      # - name: Attach Controlls and SCP to Rax-POC OU
+      #   run: |
+      #     if [ -d "./root/Rax-Mainline" ]; then
+      #       cd ./root/Rax-Mainline
+      #       terraform init
+      #       terraform plan -var-file="./root/Rax-POC/variables.tfvars" -state="./root/Rax-POC/terraform.tfstate"
+      #       #terraform apply -var-file="./root/Rax-POC/variables.tfvars" -state="./root/Rax-POC/terraform.tfstate"
+      #       #terraform destroy -var-file="./root/Rax-POC/variables.tfvars" -state="./root/Rax-POC/terraform.tfstate"
+      #     else
+      #       echo "Directory ./root/create_Config does not exist."
+      #       exit 1
+      #     fi
+          
+      # - name: Attach Controlls and SCP to Rax-Sandbox OU
+      #   run: |
+      #     if [ -d "./root/Rax-Mainline" ]; then
+      #       cd ./root/Rax-Mainline
+      #       terraform init
+      #       terraform plan -var-file="./root/Rax-Sandbox/variables.tfvars" -state="./root/Rax-Sandbox/terraform.tfstate"
+      #       #terraform apply -var-file="./root/Rax-Sandbox/variables.tfvars" -state="./root/Rax-Sandbox/terraform.tfstate"
+      #       #terraform destroy -var-file="./root/Rax-Sandbox/variables.tfvars" -state="./root/Rax-Sandbox/terraform.tfstate"
+      #     else
+      #       echo "Directory ./root/create_Config does not exist."
+      #       exit 1
+      #     fi
+
+      # - name: Attach Controlls and SCP to Security OU
+      #   run: |
+      #     if [ -d "./root/Rax-Mainline" ]; then
+      #       cd ./root/Rax-Mainline
+      #       terraform init
+      #       terraform plan -var-file="./root/Security/variables.tfvars" -state="./root/Security/terraform.tfstate"
+      #       #terraform apply -var-file="./root/Security/variables.tfvars" -state="./root/Security/terraform.tfstate"
+      #       #terraform destroy -var-file="./root/Security/variables.tfvars" -state="./root/Security/terraform.tfstate"
+      #     else
+      #       echo "Directory does not exist."
+      #       exit 1
+      #     fi
+
+    
