@@ -40,7 +40,7 @@ jobs:
             cd ./root/create_Config
             terraform init
             terraform plan -state="./root/create_Config/terraform.tfstate" -var="policy_name=rax-Testing-All-Base-SCps"
-            terraform apply -auto-approve -state="./root/create_Config/terraform.tfstate" -var="policy_name=rax-Testing-All-Base-SCps"
+            #terraform apply -auto-approve -state="./root/create_Config/terraform.tfstate" -var="policy_name=rax-Testing-All-Base-SCps"
             #terraform destroy -auto-approve -state="./root/create_Config/terraform.tfstate"
           else
             echo "Directory ./root/create_Config does not exist."
