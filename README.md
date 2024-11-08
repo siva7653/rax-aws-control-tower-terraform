@@ -3,22 +3,48 @@
 ---------------------------
 
 ## create_Config rules (for create new custom config rules)
-cd /root/create_Config
-terraform plan  -state="./create_Config/terraform.tfstate"
-terraform apply -state="./create_Config/terraform.tfstate"
-terraform destroy -state="./create_Config/terraform.tfstate"
+## name of workflow ---create_Custom_Rule.yaml
+    •	Ensure that the AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, and AWS_SESSION_TOKEN are properly configured in the GitHub repository’s secrets.
+    •	The policy_name variable (-var="policy_name=rax_varaible_name") can be customized based on your requirements.
+    •	The terraform apply and terraform destroy commands are commented out for safety.
+    •	When you're ready to apply or destroy resources, remove the # at the beginning of those lines.
+
+    -----Run from Local VScode commands--------------
+    cd /root/create_Config
+    terraform init
+    terraform plan -state="./root/create_SCP/terraform.tfstate" -var="policy_name=rax_varaible_name"
+    #terraform apply -auto-approve -state="./root/create_SCP/terraform.tfstate" -var="policy_name=rax_varaible_name"
+    #terraform destroy -auto-approve -state="./root/create_SCP/terraform.tfstate"
 
 ## create_SCP (for create new custom scp's)
-cd /root/create_SCP
-terraform plan  -state="./create_SCP/terraform.tfstate"
-terraform apply -state="./create_SCP/terraform.tfstate"
-terraform destroy -state="./create_SCP/terraform.tfstate"
-
+## name of workflow ---create_Custom_SCP.yaml
+    •	Ensure that the AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, and AWS_SESSION_TOKEN are properly configured in the GitHub repository’s secrets.
+    •	The policy_name variable (-var="policy_name=rax_varaible_name") can be customized based on your requirements.
+    •	The terraform apply and terraform destroy commands are commented out for safety.
+    •	When you're ready to apply or destroy resources, remove the # at the beginning of those lines.
+    
+    -----Run from Local VScode commands--------------
+    cd /root/create_SCP
+    terraform init
+    terraform plan -state="./root/create_Config/terraform.tfstate" -var="policy_name=rax_varaible_name"
+    #terraform apply -auto-approve -state="./root/create_Config/terraform.tfstate" -var="rax_varaible_name"
+    #terraform destroy -auto-approve -state="./root/create_Config/terraform.tfstate"
+    
 ## attach scp's in Rax-Mainline Environment
-cd /root
-terraform plan -var-file="./Rax-Mainline/variables.tfvars" -state="./Rax-Mainline/terraform.tfstate"
-terraform apply -var-file="./Rax-Mainline/variables.tfvars" -state="./Rax-Mainline/terraform.tfstate"
-terraform destroy -var-file="./Rax-Mainline/variables.tfvars" -state="./Rax-Mainline/terraform.tfstate"
+## name of workflow ---create_Cus.yaml
+    •	Ensure that the AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, and AWS_SESSION_TOKEN are properly configured in the GitHub repository’s secrets.
+    •	The policy_name variable (-var="policy_name=rax_varaible_name") can be customized based on your requirements.
+    •	The terraform apply and terraform destroy commands are commented out for safety.
+    •	When you're ready to apply or destroy resources, remove the # at the beginning of those lines.
+    •   Review 'variables.tfvars' file for the following variables:
+        #- control_names, organizational_unit_ids (e.g., ["test-ou-aid12v"]),
+        #- policy_ids, and target_id.
+        
+    -----Run from Local VScode commands--------------
+    cd /root/Rax-Mainline
+    terraform plan -var-file="./root/Rax-Mainline/variables.tfvars" -state="./Rax-Mainline/terraform.tfstate"
+    #terraform apply -var-file="./Rax-Mainline/variables.tfvars" -state="./Rax-Mainline/terraform.tfstate"
+    #terraform destroy -var-file="./Rax-Mainline/variables.tfvars" -state="./Rax-Mainline/terraform.tfstate"
 
 ## attach scp's in Rax-POC Environment
 cd /root
