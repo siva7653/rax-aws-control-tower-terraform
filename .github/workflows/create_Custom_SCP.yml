@@ -41,7 +41,7 @@ jobs:
             cd ./root/create_SCP
             terraform init
             terraform plan -state="./root/create_SCP/terraform.tfstate" -var="policy_name=rax-Testing01-All-Base-SCps"
-            terraform apply -auto-approve -state="./root/create_SCP/terraform.tfstate" -var="policy_name=rax-Testing01-All-Base-SCps"
+            #terraform apply -auto-approve -state="./root/create_SCP/terraform.tfstate" -var="policy_name=rax-Testing01-All-Base-SCps"
             #terraform destroy -auto-approve -state="./root/create_SCP/terraform.tfstate"
           else
             echo "Directory ./root/create_SCP does not exist."
