@@ -1,0 +1,49 @@
+# Before running this workflow, please refer to the instructions in the README file.
+name: Create Config Rule
+
+on:
+  push:
+    branches:
+      - main
+#      - sivaVanga
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  terraform:
+    name: Run Terraform
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install Terraform
+        run: |
+          TERRAFORM_VERSION="1.4.0"
+          curl -LO "https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip"
+          unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip
+          sudo mv terraform /usr/local/bin/
+          terraform --version
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
+          aws-region: us-east-1  # Specify the AWS region for your resources
+
+      - name: Run Terraform Commands
+        run: |
+          if [ -d "./root/Rax-Mainline" ]; then
+            cd ./root/Rax-Mainline
+            terraform init
+            terraform plan -var-file="./root/Rax-Mainline/variables.tfvars" -state="./Rax-Mainline/terraform.tfstate"
+            #terraform apply -var-file="./Rax-Mainline/variables.tfvars" -state="./Rax-Mainline/terraform.tfstate"
+            #terraform destroy -var-file="./Rax-Mainline/variables.tfvars" -state="./Rax-Mainline/terraform.tfstate"
+          else
+            echo "Directory ./root/create_Config does not exist."
+            exit 1
+          fi
