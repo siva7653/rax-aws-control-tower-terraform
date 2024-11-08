@@ -78,9 +78,9 @@ resource "aws_config_config_rule" "ebs_snapshot_encryption" {
   }
 }
 
-rule ebs_snapshot_encryption when resourceType == "AWS::EC2::Snapshot" {
-    configuration.encrypted == true
-}
+#rule ebs_snapshot_encryption when resourceType == "AWS::EC2::Snapshot" {
+#    configuration.encrypted == true
+#}
 
 # 9. cloudtrail-enabled (Ensure CloudTrail is Enabled)
 resource "aws_config_config_rule" "cloudtrail_enabled" {
