@@ -31,7 +31,7 @@
     #terraform destroy -auto-approve -state="./root/create_Config/terraform.tfstate"
     
 ## attach scp's in Rax-Mainline Environment
-## name of workflow ---create_Cus.yaml
+## name of workflow ---attach_SCP_to_OU.yaml
     •	Ensure that the AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, and AWS_SESSION_TOKEN are properly configured in the GitHub repository’s secrets.
     •	The policy_name variable (-var="policy_name=rax_varaible_name") can be customized based on your requirements.
     •	The terraform apply and terraform destroy commands are commented out for safety.
@@ -39,30 +39,71 @@
     •   Review 'variables.tfvars' file for the following variables:
         #- control_names, organizational_unit_ids (e.g., ["test-ou-aid12v"]),
         #- policy_ids, and target_id.
+    •   Depending on the OU you want to manage, uncomment the respective section. 
+            For example, if you want to apply controls to Rax-Mainline, uncomment the lines under Attach Controls and SCP to Rax-Mainline OU.
         
     -----Run from Local VScode commands--------------
     cd /root/Rax-Mainline
     terraform plan -var-file="./root/Rax-Mainline/variables.tfvars" -state="./Rax-Mainline/terraform.tfstate"
-    #terraform apply -var-file="./Rax-Mainline/variables.tfvars" -state="./Rax-Mainline/terraform.tfstate"
-    #terraform destroy -var-file="./Rax-Mainline/variables.tfvars" -state="./Rax-Mainline/terraform.tfstate"
+    #terraform apply -var-file="./root/Rax-Mainline/variables.tfvars" -state="./root/Rax-Mainline/terraform.tfstate"
+    #terraform destroy -var-file="./root/Rax-Mainline/variables.tfvars" -state="./root/Rax-Mainline/terraform.tfstate"
 
 ## attach scp's in Rax-POC Environment
-cd /root
-terraform plan -var-file="./Rax-POC/variables.tfvars" -state="./Rax-POC/terraform.tfstate"
-terraform apply -var-file="./Rax-POC/variables.tfvars" -state="./Rax-POC/terraform.tfstate"
-terraform destroy -var-file="./Rax-POC/variables.tfvars" -state="./Rax-POC/terraform.tfstate"
+## name of workflow ---attach_SCP_to_OU.yaml
+    •	Ensure that the AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, and AWS_SESSION_TOKEN are properly configured in the GitHub repository’s secrets.
+    •	The policy_name variable (-var="policy_name=rax_varaible_name") can be customized based on your requirements.
+    •	The terraform apply and terraform destroy commands are commented out for safety.
+    •	When you're ready to apply or destroy resources, remove the # at the beginning of those lines.
+    •   Review 'variables.tfvars' file for the following variables:
+        #- control_names, organizational_unit_ids (e.g., ["test-ou-aid12v"]),
+        #- policy_ids, and target_id.
+    •   Depending on the OU you want to manage, uncomment the respective section. 
+            For example, if you want to apply controls to Rax-POC, uncomment the lines under Attach Controls and SCP to Rax-POC OU.
+        
+    -----Run from Local VScode commands--------------
+
+    cd /root/Rax-POC
+    terraform plan -var-file="./root/Rax-POC/variables.tfvars" -state="./root/Rax-POC/terraform.tfstate"
+    terraform apply -var-file="./root/Rax-POC/variables.tfvars" -state="./root/Rax-POC/terraform.tfstate"
+    terraform destroy -var-file="./root/Rax-POC/variables.tfvars" -state="./root/Rax-POC/terraform.tfstate"
 
 ## attach scp's in Rax-Sandbox Environment
-cd /root
-terraform plan -var-file="./Rax-Sandbox/variables.tfvars" -state="./Rax-Sandbox/terraform.tfstate"
-terraform apply -var-file="./Rax-Sandbox/variables.tfvars" -state="./Rax-Sandbox/terraform.tfstate"
-terraform destroy -var-file="./Rax-Sandbox/variables.tfvars" -state="./Rax-Sandbox/terraform.tfstate"
+## name of workflow ---attach_SCP_to_OU.yaml
+    •	Ensure that the AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, and AWS_SESSION_TOKEN are properly configured in the GitHub repository’s secrets.
+    •	The policy_name variable (-var="policy_name=rax_varaible_name") can be customized based on your requirements.
+    •	The terraform apply and terraform destroy commands are commented out for safety.
+    •	When you're ready to apply or destroy resources, remove the # at the beginning of those lines.
+    •   Review 'variables.tfvars' file for the following variables:
+        #- control_names, organizational_unit_ids (e.g., ["test-ou-aid12v"]),
+        #- policy_ids, and target_id.
+    •   Depending on the OU you want to manage, uncomment the respective section. 
+            For example, if you want to apply controls to Rax-Sandbox, uncomment the lines under Attach Controls and SCP to Rax-Sandbox OU.
+        
+    -----Run from Local VScode commands--------------
+
+    cd /root/Rax-Sandbox
+    terraform plan -var-file="./root/Rax-Sandbox/variables.tfvars" -state="./root/Rax-Sandbox/terraform.tfstate"
+    terraform apply -var-file="./root/Rax-Sandbox/variables.tfvars" -state="./root/Rax-Sandbox/terraform.tfstate"
+    terraform destroy -var-file="./root/Rax-Sandbox/variables.tfvars" -state="./root/Rax-Sandbox/terraform.tfstate"
 
 ## attach scp's in Security Environment
-cd /root
-terraform plan -var-file="./Security/variables.tfvars" -state="./Security/terraform.tfstate"
-terraform apply -var-file="./Security/variables.tfvars" -state="./Security/terraform.tfstate"
-terraform destroy -var-file="./Security/variables.tfvars" -state="./Security/terraform.tfstate"
+## name of workflow ---attach_SCP_to_OU.yaml
+    •	Ensure that the AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, and AWS_SESSION_TOKEN are properly configured in the GitHub repository’s secrets.
+    •	The policy_name variable (-var="policy_name=rax_varaible_name") can be customized based on your requirements.
+    •	The terraform apply and terraform destroy commands are commented out for safety.
+    •	When you're ready to apply or destroy resources, remove the # at the beginning of those lines.
+    •   Review 'variables.tfvars' file for the following variables:
+        #- control_names, organizational_unit_ids (e.g., ["test-ou-aid12v"]),
+        #- policy_ids, and target_id.
+    •   Depending on the OU you want to manage, uncomment the respective section. 
+            For example, if you want to apply controls to Security, uncomment the lines under Attach Controls and SCP to Security OU.
+        
+    -----Run from Local VScode commands--------------
+
+    cd /root
+    terraform plan -var-file="./root/Security/variables.tfvars" -state="./root/Security/terraform.tfstate"
+    terraform apply -var-file="./root/Security/variables.tfvars" -state="./root/Security/terraform.tfstate"
+    terraform destroy -var-file="./root/Security/variables.tfvars" -state="./root/Security/terraform.tfstate"
 
 --------------------------------
 ## List of OU's
@@ -76,13 +117,3 @@ terraform destroy -var-file="./Security/variables.tfvars" -state="./Security/ter
     https://docs.aws.amazon.com/controltower/latest/controlreference/control-metadata-tables.html
     https://docs.aws.amazon.com/controltower/latest/controlreference/all-global-identifiers.html
 
-Control tower controlls behaviour like:
-
-     1. Proactive:   Proactive controls prevent non-compliant resources from being created or modified in the first place. (Blocks creation or modification of non-compliant resources)
-        Behavior:    These controls ensure compliance by blocking non-compliant configurations upfront. (Before resource creation)
-    
-    2. Detective:   Detective controls monitor resources after they are created to detect policy violations or non-compliant configurations. (Monitors and alerts if non-compliance is detected)
-        Behavior:    They alert you or generate reports if something goes wrong, but they do not stop the non-compliant action. (After resource creation)
-    
-    3. Preventive:  Preventive controls restrict certain actions from being performed by enforcing specific permissions or policies, thereby preventing violations of security or compliance rules.(Prevents users from performing specific actions or risky operations)
-        Behavior:   Preventive controls impose restrictions that stop users from making changes that violate policies. (Action-level)
