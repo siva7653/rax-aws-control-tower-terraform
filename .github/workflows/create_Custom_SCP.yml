@@ -5,7 +5,7 @@ on:
   push:
     branches:
       - main
-#      - sivaVanga #test
+#      - sivaVanga
   # pull_request:
   #   branches:
   #     - main
@@ -35,9 +35,6 @@ jobs:
           role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
           role-session-name: GitHub_to_AWS_via_FederatedOIDC
           aws-region: ${{ env.AWS_REGION }}
-      
-      - name: Debug Credentials
-        run: aws sts get-caller-identity
 
 
       - name: Verify role assumption with GetCallerIdentity
