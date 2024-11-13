@@ -1,5 +1,5 @@
 # Before running this workflow, please refer to the instructions in the README file.
-name: Multi-Job Workflow for AWS Operations
+name: Create Custom SCP
 
 on:
   push:
