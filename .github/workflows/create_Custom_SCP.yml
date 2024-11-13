@@ -35,6 +35,10 @@ jobs:
           role-to-assume: arn:aws:iam::176286861090:role/rax-github-access
           role-session-name: GitHub_to_AWS_via_FederatedOIDC
           aws-region: us-east-1
+      
+      - name: Debug Credentials
+        run: aws sts get-caller-identity
+
 
       - name: Verify role assumption with GetCallerIdentity
         run: aws sts get-caller-identity
