@@ -32,9 +32,9 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1.7.0
         with:
-          role-to-assume: "arn:aws:iam::176286861090:role/rax-github-access"
+          role-to-assume: arn:aws:iam::176286861090:role/rax-github-access
           role-session-name: GitHub_to_AWS_via_FederatedOIDC
-          aws-region: "us-east-1"
+          aws-region: us-east-1
 
       - name: Verify role assumption with GetCallerIdentity
         run: aws sts get-caller-identity
