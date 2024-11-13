@@ -5,7 +5,7 @@ on:
   push:
     branches:
       - main
-#      - sivaVanga
+#      - sivaVanga test
   # pull_request:
   #   branches:
   #     - main
