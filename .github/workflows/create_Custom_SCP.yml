@@ -1,5 +1,5 @@
 # Before running this workflow, please refer to the instructions in the README file.
-name: Create Custom SCP
+name: Multi-Job Workflow for AWS Operations
 
 on:
   push:
@@ -10,15 +10,34 @@ on:
   #   branches:
   #     - main
 
+env:
+  AWS_REGION: us-east-1
+
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
-  terraform:
-    name: Run Terraform
+  MultiStepAWSOperations:
+    name: Assume Role, Verify Identity, and Run Terraform
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        #uses:  ./github/actions/checkout
+      - name: Checkout repository
         uses: actions/checkout@v3
+
+      - name: Install AWS CLI
+        run: sudo apt-get install -y awscli
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1.7.0
+        with:
+          role-to-assume: "arn:aws:iam::176286861090:role/rax-github-access"
+          role-session-name: GitHub_to_AWS_via_FederatedOIDC
+          aws-region: "us-east-1"
+
+      - name: Verify role assumption with GetCallerIdentity
+        run: aws sts get-caller-identity
 
       - name: Install Terraform
         run: |
@@ -27,14 +46,6 @@ jobs:
           unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip
           sudo mv terraform /usr/local/bin/
           terraform --version
-
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
-          aws-region: us-east-1  # Specify the AWS region for your resources
 
       - name: Run Terraform Commands
         run: |
